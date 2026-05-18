@@ -1,0 +1,5 @@
+{
+  accessToken: 'b3192a4dcc18c336110d8f9790d84c9cbe73cf0c5a7b48904e2ba7e85d7922df'
+}
+b3192a4dcc18c336110d8f9790d84c9cbe73cf0c5a7b48904e2ba7e85d7922df
+{"error":"Missing Authorization header."}

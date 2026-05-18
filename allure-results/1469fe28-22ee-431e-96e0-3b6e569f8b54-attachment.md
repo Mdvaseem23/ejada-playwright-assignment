@@ -1,0 +1,67 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: api\books-api.spec.ts >> Create Order
+- Location: tests\api\books-api.spec.ts:3:5
+
+# Error details
+
+```
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 201
+Received: 401
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect, request } from '@playwright/test';
+  2  | 
+  3  | test('Create Order', async () => {
+  4  | 
+  5  |   const apiContext = await request.newContext();
+  6  | 
+  7  |   const authResponse = await apiContext.post(
+  8  |     'https://simple-books-api.glitch.me/api-clients/',
+  9  |     {
+  10 |       data: {
+  11 |         clientName: 'Test',
+  12 |         clientEmail: `test${Date.now()}@gmail.com`
+  13 |       }
+  14 |     }
+  15 |   );
+  16 | 
+  17 |   const authBody = await authResponse.json();
+  18 | 
+  19 |   console.log(authBody);
+  20 | 
+  21 |   const token = authBody.accessToken;
+  22 | 
+  23 |   console.log(token);
+  24 | 
+  25 |   const orderResponse = await apiContext.post(
+  26 |     'https://simple-books-api.glitch.me/orders',
+  27 |     {
+  28 |       headers: {
+  29 |         Authorization: 'Bearer ${token}'
+  30 |       },
+  31 |       data: {
+  32 |         bookId: 1,
+  33 |         customerName: 'John'
+  34 |       }
+  35 |     }
+  36 |   );
+  37 | 
+  38 |   console.log(await orderResponse.text());
+  39 | 
+> 40 |   expect(orderResponse.status()).toBe(201);
+     |                                  ^ Error: expect(received).toBe(expected) // Object.is equality
+  41 | 
+  42 | });
+```

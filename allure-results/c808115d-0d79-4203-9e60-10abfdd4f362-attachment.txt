@@ -1,0 +1,6 @@
+AUTH BODY => {
+  accessToken: 'e8b5c3f7550701241b0f7507e8c8e0a59e7bb8426d83ec2c7147be2cf940015d'
+}
+TOKEN => e8b5c3f7550701241b0f7507e8c8e0a59e7bb8426d83ec2c7147be2cf940015d
+STATUS => 401
+RESPONSE => {"error":"Missing Authorization header."}
