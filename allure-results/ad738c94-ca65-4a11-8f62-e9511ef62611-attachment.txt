@@ -1,0 +1,1 @@
+AUTH BODY => { error: 'API client already registered. Try a different email.' }

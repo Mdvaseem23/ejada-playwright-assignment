@@ -9,8 +9,8 @@ test('Create Order', async () => {
     'https://simple-books-api.glitch.me/api-clients/',
     {
       data: {
-        clientName: 'Test',
-        clientEmail: `test${Date.now()}@gmail.com`
+        clientName: 'vaseem',
+        clientEmail: 'vaseem@gmail.com'
       }
     }
   );
@@ -21,9 +21,7 @@ test('Create Order', async () => {
 
   const token = authBody.accessToken;
 
-  console.log('TOKEN =>', token);
-
-  // ORDER
+ // ORDER
   const orderResponse = await apiContext.post(
     'https://simple-books-api.glitch.me/orders',
     {
@@ -37,9 +35,5 @@ test('Create Order', async () => {
       }
     }
   );
-
-  console.log('STATUS =>', orderResponse.status());
-
-  console.log('RESPONSE =>', await orderResponse.text());
 
 });
